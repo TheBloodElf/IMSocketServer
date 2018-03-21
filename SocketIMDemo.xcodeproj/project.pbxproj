@@ -1,0 +1,622 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		047297E8205A973F00930A83 /* ChatSocketServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 047297D8205A973F00930A83 /* ChatSocketServer.m */; };
+		047297E9205A973F00930A83 /* IMSocketHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 047297DD205A973F00930A83 /* IMSocketHeader.m */; };
+		047297EC205A973F00930A83 /* IMSocketUserHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 047297E3205A973F00930A83 /* IMSocketUserHandler.m */; };
+		047297ED205A973F00930A83 /* ProtocolClientReq.m in Sources */ = {isa = PBXBuildFile; fileRef = 047297E5205A973F00930A83 /* ProtocolClientReq.m */; };
+		047297EE205A973F00930A83 /* ProtocolServerResp.m in Sources */ = {isa = PBXBuildFile; fileRef = 047297E7205A973F00930A83 /* ProtocolServerResp.m */; };
+		047297F2205A974300930A83 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 047297F1205A974300930A83 /* AppDelegate.m */; };
+		047297FB205A974700930A83 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 047297F9205A974700930A83 /* UserManager.m */; };
+		0472980F205A974C00930A83 /* NSString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 047297FF205A974C00930A83 /* NSString+Category.m */; };
+		04729810205A974C00930A83 /* MCJSONDateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 04729804205A974C00930A83 /* MCJSONDateTransformer.m */; };
+		04729811205A974C00930A83 /* MCJSONNonNullStringTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 04729806205A974C00930A83 /* MCJSONNonNullStringTransformer.m */; };
+		04729812205A974C00930A83 /* MCJSONPrimaryKeyTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 04729808205A974C00930A83 /* MCJSONPrimaryKeyTransformer.m */; };
+		04729813205A974C00930A83 /* MCJSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0472980A205A974C00930A83 /* MCJSONValueTransformer.m */; };
+		04729814205A974C00930A83 /* RLMObject+Copying.m in Sources */ = {isa = PBXBuildFile; fileRef = 0472980C205A974C00930A83 /* RLMObject+Copying.m */; };
+		04729815205A974C00930A83 /* RLMObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 0472980E205A974C00930A83 /* RLMObject+JSON.m */; };
+		04729819205A975100930A83 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04729818205A975100930A83 /* ViewController.m */; };
+		0472981D205A978900930A83 /* AppCustoms.m in Sources */ = {isa = PBXBuildFile; fileRef = 0472981C205A978900930A83 /* AppCustoms.m */; };
+		04729822205A97D700930A83 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0472981F205A97D700930A83 /* Info.plist */; };
+		04729823205A97D700930A83 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04729820205A97D700930A83 /* main.m */; };
+		047C4399202D7D0F00BB3400 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047C4397202D7D0F00BB3400 /* Main.storyboard */; };
+		047C439B202D7D0F00BB3400 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 047C439A202D7D0F00BB3400 /* Assets.xcassets */; };
+		047C439E202D7D0F00BB3400 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047C439C202D7D0F00BB3400 /* LaunchScreen.storyboard */; };
+		048569312060F9C9007C4C53 /* iOS代码规范文档.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 048569302060F9C9007C4C53 /* iOS代码规范文档.pdf */; };
+		04E9325320593C9C00677EDE /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 04E9325220593C9C00677EDE /* readme.md */; };
+		BB3DEFB7F44A3728ED0FDEF5 /* libPods-SocketIMDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 60E31DF6636A636A70262FDC /* libPods-SocketIMDemo.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		047297D7205A973F00930A83 /* ChatSocketServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatSocketServer.h; sourceTree = "<group>"; };
+		047297D8205A973F00930A83 /* ChatSocketServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatSocketServer.m; sourceTree = "<group>"; };
+		047297DB205A973F00930A83 /* IMSocketDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMSocketDefines.h; sourceTree = "<group>"; };
+		047297DC205A973F00930A83 /* IMSocketHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMSocketHeader.h; sourceTree = "<group>"; };
+		047297DD205A973F00930A83 /* IMSocketHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMSocketHeader.m; sourceTree = "<group>"; };
+		047297E2205A973F00930A83 /* IMSocketUserHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMSocketUserHandler.h; sourceTree = "<group>"; };
+		047297E3205A973F00930A83 /* IMSocketUserHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMSocketUserHandler.m; sourceTree = "<group>"; };
+		047297E4205A973F00930A83 /* ProtocolClientReq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolClientReq.h; sourceTree = "<group>"; };
+		047297E5205A973F00930A83 /* ProtocolClientReq.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtocolClientReq.m; sourceTree = "<group>"; };
+		047297E6205A973F00930A83 /* ProtocolServerResp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolServerResp.h; sourceTree = "<group>"; };
+		047297E7205A973F00930A83 /* ProtocolServerResp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtocolServerResp.m; sourceTree = "<group>"; };
+		047297F0205A974300930A83 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		047297F1205A974300930A83 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		047297F8205A974700930A83 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
+		047297F9205A974700930A83 /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
+		047297FE205A974C00930A83 /* NSString+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Category.h"; sourceTree = "<group>"; };
+		047297FF205A974C00930A83 /* NSString+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Category.m"; sourceTree = "<group>"; };
+		04729803205A974C00930A83 /* MCJSONDateTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCJSONDateTransformer.h; sourceTree = "<group>"; };
+		04729804205A974C00930A83 /* MCJSONDateTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCJSONDateTransformer.m; sourceTree = "<group>"; };
+		04729805205A974C00930A83 /* MCJSONNonNullStringTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCJSONNonNullStringTransformer.h; sourceTree = "<group>"; };
+		04729806205A974C00930A83 /* MCJSONNonNullStringTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCJSONNonNullStringTransformer.m; sourceTree = "<group>"; };
+		04729807205A974C00930A83 /* MCJSONPrimaryKeyTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCJSONPrimaryKeyTransformer.h; sourceTree = "<group>"; };
+		04729808205A974C00930A83 /* MCJSONPrimaryKeyTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCJSONPrimaryKeyTransformer.m; sourceTree = "<group>"; };
+		04729809205A974C00930A83 /* MCJSONValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCJSONValueTransformer.h; sourceTree = "<group>"; };
+		0472980A205A974C00930A83 /* MCJSONValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCJSONValueTransformer.m; sourceTree = "<group>"; };
+		0472980B205A974C00930A83 /* RLMObject+Copying.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RLMObject+Copying.h"; sourceTree = "<group>"; };
+		0472980C205A974C00930A83 /* RLMObject+Copying.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RLMObject+Copying.m"; sourceTree = "<group>"; };
+		0472980D205A974C00930A83 /* RLMObject+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RLMObject+JSON.h"; sourceTree = "<group>"; };
+		0472980E205A974C00930A83 /* RLMObject+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RLMObject+JSON.m"; sourceTree = "<group>"; };
+		04729817205A975100930A83 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		04729818205A975100930A83 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		0472981B205A978900930A83 /* AppCustoms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppCustoms.h; sourceTree = "<group>"; };
+		0472981C205A978900930A83 /* AppCustoms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppCustoms.m; sourceTree = "<group>"; };
+		0472981F205A97D700930A83 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04729820205A97D700930A83 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		04729821205A97D700930A83 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		04729824205A982F00930A83 /* Utikles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utikles.h; sourceTree = "<group>"; };
+		04729825205A989F00930A83 /* InterfaceService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceService.h; sourceTree = "<group>"; };
+		047C438E202D7D0F00BB3400 /* SocketIMDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocketIMDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		047C4398202D7D0F00BB3400 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		047C439A202D7D0F00BB3400 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		047C439D202D7D0F00BB3400 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		048569302060F9C9007C4C53 /* iOS代码规范文档.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "iOS代码规范文档.pdf"; sourceTree = "<group>"; };
+		04E9325220593C9C00677EDE /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
+		158F2C10FF848294CACF75F3 /* Pods-SocketIMDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocketIMDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SocketIMDemo/Pods-SocketIMDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		2409064FD3F8FEF9220BAB7E /* Pods-SocketIMDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocketIMDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-SocketIMDemo/Pods-SocketIMDemo.release.xcconfig"; sourceTree = "<group>"; };
+		60E31DF6636A636A70262FDC /* libPods-SocketIMDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SocketIMDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		047C438B202D7D0F00BB3400 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB3DEFB7F44A3728ED0FDEF5 /* libPods-SocketIMDemo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		047297D4205A973F00930A83 /* InterfaceService */ = {
+			isa = PBXGroup;
+			children = (
+				04729825205A989F00930A83 /* InterfaceService.h */,
+				047297D5205A973F00930A83 /* ImService */,
+			);
+			path = InterfaceService;
+			sourceTree = "<group>";
+		};
+		047297D5205A973F00930A83 /* ImService */ = {
+			isa = PBXGroup;
+			children = (
+				047297D7205A973F00930A83 /* ChatSocketServer.h */,
+				047297D8205A973F00930A83 /* ChatSocketServer.m */,
+				047297DA205A973F00930A83 /* ToolIMClass */,
+			);
+			path = ImService;
+			sourceTree = "<group>";
+		};
+		047297DA205A973F00930A83 /* ToolIMClass */ = {
+			isa = PBXGroup;
+			children = (
+				047297DB205A973F00930A83 /* IMSocketDefines.h */,
+				047297DC205A973F00930A83 /* IMSocketHeader.h */,
+				047297DD205A973F00930A83 /* IMSocketHeader.m */,
+				047297E2205A973F00930A83 /* IMSocketUserHandler.h */,
+				047297E3205A973F00930A83 /* IMSocketUserHandler.m */,
+				047297E4205A973F00930A83 /* ProtocolClientReq.h */,
+				047297E5205A973F00930A83 /* ProtocolClientReq.m */,
+				047297E6205A973F00930A83 /* ProtocolServerResp.h */,
+				047297E7205A973F00930A83 /* ProtocolServerResp.m */,
+			);
+			path = ToolIMClass;
+			sourceTree = "<group>";
+		};
+		047297EF205A974300930A83 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				047297F0205A974300930A83 /* AppDelegate.h */,
+				047297F1205A974300930A83 /* AppDelegate.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		047297F3205A974700930A83 /* ModelManager */ = {
+			isa = PBXGroup;
+			children = (
+				047297F4205A974700930A83 /* Models */,
+				047297F7205A974700930A83 /* UserManager */,
+			);
+			path = ModelManager;
+			sourceTree = "<group>";
+		};
+		047297F4205A974700930A83 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		047297F7205A974700930A83 /* UserManager */ = {
+			isa = PBXGroup;
+			children = (
+				047297F8205A974700930A83 /* UserManager.h */,
+				047297F9205A974700930A83 /* UserManager.m */,
+			);
+			path = UserManager;
+			sourceTree = "<group>";
+		};
+		047297FC205A974C00930A83 /* Utikles */ = {
+			isa = PBXGroup;
+			children = (
+				04729824205A982F00930A83 /* Utikles.h */,
+				047297FD205A974C00930A83 /* Category */,
+				04729801205A974C00930A83 /* ThirdParty */,
+			);
+			path = Utikles;
+			sourceTree = "<group>";
+		};
+		047297FD205A974C00930A83 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				047297FE205A974C00930A83 /* NSString+Category.h */,
+				047297FF205A974C00930A83 /* NSString+Category.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		04729801205A974C00930A83 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				04729802205A974C00930A83 /* Realm+JSON */,
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		04729802205A974C00930A83 /* Realm+JSON */ = {
+			isa = PBXGroup;
+			children = (
+				04729803205A974C00930A83 /* MCJSONDateTransformer.h */,
+				04729804205A974C00930A83 /* MCJSONDateTransformer.m */,
+				04729805205A974C00930A83 /* MCJSONNonNullStringTransformer.h */,
+				04729806205A974C00930A83 /* MCJSONNonNullStringTransformer.m */,
+				04729807205A974C00930A83 /* MCJSONPrimaryKeyTransformer.h */,
+				04729808205A974C00930A83 /* MCJSONPrimaryKeyTransformer.m */,
+				04729809205A974C00930A83 /* MCJSONValueTransformer.h */,
+				0472980A205A974C00930A83 /* MCJSONValueTransformer.m */,
+				0472980B205A974C00930A83 /* RLMObject+Copying.h */,
+				0472980C205A974C00930A83 /* RLMObject+Copying.m */,
+				0472980D205A974C00930A83 /* RLMObject+JSON.h */,
+				0472980E205A974C00930A83 /* RLMObject+JSON.m */,
+			);
+			path = "Realm+JSON";
+			sourceTree = "<group>";
+		};
+		04729816205A975100930A83 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				04729817205A975100930A83 /* ViewController.h */,
+				04729818205A975100930A83 /* ViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		0472981A205A978900930A83 /* AppCustoms */ = {
+			isa = PBXGroup;
+			children = (
+				0472981B205A978900930A83 /* AppCustoms.h */,
+				0472981C205A978900930A83 /* AppCustoms.m */,
+			);
+			path = AppCustoms;
+			sourceTree = "<group>";
+		};
+		0472981E205A97D700930A83 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0472981F205A97D700930A83 /* Info.plist */,
+				04729820205A97D700930A83 /* main.m */,
+				04729821205A97D700930A83 /* PrefixHeader.pch */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		047C4385202D7D0F00BB3400 = {
+			isa = PBXGroup;
+			children = (
+				047C4390202D7D0F00BB3400 /* SocketIMDemo */,
+				047C438F202D7D0F00BB3400 /* Products */,
+				C3B9C6C4C512424D17A455D9 /* Pods */,
+				9AE467BFF5CC865195794C6A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		047C438F202D7D0F00BB3400 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				047C438E202D7D0F00BB3400 /* SocketIMDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		047C4390202D7D0F00BB3400 /* SocketIMDemo */ = {
+			isa = PBXGroup;
+			children = (
+				04E9325220593C9C00677EDE /* readme.md */,
+				048569302060F9C9007C4C53 /* iOS代码规范文档.pdf */,
+				047297EF205A974300930A83 /* AppDelegate */,
+				047297FC205A974C00930A83 /* Utikles */,
+				047297D4205A973F00930A83 /* InterfaceService */,
+				0472981A205A978900930A83 /* AppCustoms */,
+				047297F3205A974700930A83 /* ModelManager */,
+				04729816205A975100930A83 /* ViewControllers */,
+				0472981E205A97D700930A83 /* Supporting Files */,
+				047C439A202D7D0F00BB3400 /* Assets.xcassets */,
+				047C4397202D7D0F00BB3400 /* Main.storyboard */,
+				047C439C202D7D0F00BB3400 /* LaunchScreen.storyboard */,
+			);
+			path = SocketIMDemo;
+			sourceTree = "<group>";
+		};
+		9AE467BFF5CC865195794C6A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				60E31DF6636A636A70262FDC /* libPods-SocketIMDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C3B9C6C4C512424D17A455D9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				158F2C10FF848294CACF75F3 /* Pods-SocketIMDemo.debug.xcconfig */,
+				2409064FD3F8FEF9220BAB7E /* Pods-SocketIMDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		047C438D202D7D0F00BB3400 /* SocketIMDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 047C43A4202D7D0F00BB3400 /* Build configuration list for PBXNativeTarget "SocketIMDemo" */;
+			buildPhases = (
+				29391788BDAC42A079E08BBA /* [CP] Check Pods Manifest.lock */,
+				047C438A202D7D0F00BB3400 /* Sources */,
+				047C438B202D7D0F00BB3400 /* Frameworks */,
+				047C438C202D7D0F00BB3400 /* Resources */,
+				688CC96A531A04C0540C3C24 /* [CP] Embed Pods Frameworks */,
+				13AFDF08060D46B8E7608BD7 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SocketIMDemo;
+			productName = SocketIMDemo;
+			productReference = 047C438E202D7D0F00BB3400 /* SocketIMDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		047C4386202D7D0F00BB3400 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = Mac;
+				TargetAttributes = {
+					047C438D202D7D0F00BB3400 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 047C4389202D7D0F00BB3400 /* Build configuration list for PBXProject "SocketIMDemo" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 047C4385202D7D0F00BB3400;
+			productRefGroup = 047C438F202D7D0F00BB3400 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				047C438D202D7D0F00BB3400 /* SocketIMDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		047C438C202D7D0F00BB3400 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				047C439E202D7D0F00BB3400 /* LaunchScreen.storyboard in Resources */,
+				047C439B202D7D0F00BB3400 /* Assets.xcassets in Resources */,
+				04E9325320593C9C00677EDE /* readme.md in Resources */,
+				048569312060F9C9007C4C53 /* iOS代码规范文档.pdf in Resources */,
+				04729822205A97D700930A83 /* Info.plist in Resources */,
+				047C4399202D7D0F00BB3400 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		13AFDF08060D46B8E7608BD7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SocketIMDemo/Pods-SocketIMDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		29391788BDAC42A079E08BBA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		688CC96A531A04C0540C3C24 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SocketIMDemo/Pods-SocketIMDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		047C438A202D7D0F00BB3400 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				047297F2205A974300930A83 /* AppDelegate.m in Sources */,
+				047297EE205A973F00930A83 /* ProtocolServerResp.m in Sources */,
+				04729812205A974C00930A83 /* MCJSONPrimaryKeyTransformer.m in Sources */,
+				04729811205A974C00930A83 /* MCJSONNonNullStringTransformer.m in Sources */,
+				047297FB205A974700930A83 /* UserManager.m in Sources */,
+				04729819205A975100930A83 /* ViewController.m in Sources */,
+				047297EC205A973F00930A83 /* IMSocketUserHandler.m in Sources */,
+				0472981D205A978900930A83 /* AppCustoms.m in Sources */,
+				04729823205A97D700930A83 /* main.m in Sources */,
+				04729814205A974C00930A83 /* RLMObject+Copying.m in Sources */,
+				0472980F205A974C00930A83 /* NSString+Category.m in Sources */,
+				047297E9205A973F00930A83 /* IMSocketHeader.m in Sources */,
+				04729810205A974C00930A83 /* MCJSONDateTransformer.m in Sources */,
+				04729815205A974C00930A83 /* RLMObject+JSON.m in Sources */,
+				04729813205A974C00930A83 /* MCJSONValueTransformer.m in Sources */,
+				047297E8205A973F00930A83 /* ChatSocketServer.m in Sources */,
+				047297ED205A973F00930A83 /* ProtocolClientReq.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		047C4397202D7D0F00BB3400 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				047C4398202D7D0F00BB3400 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		047C439C202D7D0F00BB3400 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				047C439D202D7D0F00BB3400 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		047C43A2202D7D0F00BB3400 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		047C43A3202D7D0F00BB3400 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		047C43A5202D7D0F00BB3400 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 158F2C10FF848294CACF75F3 /* Pods-SocketIMDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				GCC_PREFIX_HEADER = "$(TARGET_NAME)/Supporting Files/PrefixHeader.pch";
+				INFOPLIST_FILE = "SocketIMDemo/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = fuck.SocketIMDemo.server;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		047C43A6202D7D0F00BB3400 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2409064FD3F8FEF9220BAB7E /* Pods-SocketIMDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				GCC_PREFIX_HEADER = "$(TARGET_NAME)/Supporting Files/PrefixHeader.pch";
+				INFOPLIST_FILE = "SocketIMDemo/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = fuck.SocketIMDemo.server;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		047C4389202D7D0F00BB3400 /* Build configuration list for PBXProject "SocketIMDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				047C43A2202D7D0F00BB3400 /* Debug */,
+				047C43A3202D7D0F00BB3400 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		047C43A4202D7D0F00BB3400 /* Build configuration list for PBXNativeTarget "SocketIMDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				047C43A5202D7D0F00BB3400 /* Debug */,
+				047C43A6202D7D0F00BB3400 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 047C4386202D7D0F00BB3400 /* Project object */;
+}

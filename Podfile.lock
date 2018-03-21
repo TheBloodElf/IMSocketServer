@@ -1,0 +1,20 @@
+PODS:
+  - CocoaAsyncSocket (7.6.2)
+  - MJExtension (3.0.13)
+  - Realm (2.8.3):
+    - Realm/Headers (= 2.8.3)
+  - Realm/Headers (2.8.3)
+
+DEPENDENCIES:
+  - CocoaAsyncSocket (~> 7.6.2)
+  - MJExtension
+  - Realm (~> 2.8.1)
+
+SPEC CHECKSUMS:
+  CocoaAsyncSocket: 3541e024f48c54b251638ef72d51dd42808de932
+  MJExtension: 5932755f451458eefa24239358817f8d291240c7
+  Realm: 3601ef091c8c499a31101d8563b991e75546cdce
+
+PODFILE CHECKSUM: 10a0573fa6fb21e58da92b6614460645b262fb1e
+
+COCOAPODS: 1.1.1
