@@ -29,7 +29,7 @@
 		047C439B202D7D0F00BB3400 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 047C439A202D7D0F00BB3400 /* Assets.xcassets */; };
 		047C439E202D7D0F00BB3400 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047C439C202D7D0F00BB3400 /* LaunchScreen.storyboard */; };
 		048569312060F9C9007C4C53 /* iOS代码规范文档.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 048569302060F9C9007C4C53 /* iOS代码规范文档.pdf */; };
-		04E9325320593C9C00677EDE /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 04E9325220593C9C00677EDE /* readme.md */; };
+		0485694F2061F9C1007C4C53 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0485694E2061F9C1007C4C53 /* README.md */; };
 		BB3DEFB7F44A3728ED0FDEF5 /* libPods-SocketIMDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 60E31DF6636A636A70262FDC /* libPods-SocketIMDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -77,7 +77,7 @@
 		047C439A202D7D0F00BB3400 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		047C439D202D7D0F00BB3400 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		048569302060F9C9007C4C53 /* iOS代码规范文档.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "iOS代码规范文档.pdf"; sourceTree = "<group>"; };
-		04E9325220593C9C00677EDE /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
+		0485694E2061F9C1007C4C53 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		158F2C10FF848294CACF75F3 /* Pods-SocketIMDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocketIMDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SocketIMDemo/Pods-SocketIMDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		2409064FD3F8FEF9220BAB7E /* Pods-SocketIMDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocketIMDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-SocketIMDemo/Pods-SocketIMDemo.release.xcconfig"; sourceTree = "<group>"; };
 		60E31DF6636A636A70262FDC /* libPods-SocketIMDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SocketIMDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -241,6 +241,7 @@
 		047C4385202D7D0F00BB3400 = {
 			isa = PBXGroup;
 			children = (
+				0485694E2061F9C1007C4C53 /* README.md */,
 				047C4390202D7D0F00BB3400 /* SocketIMDemo */,
 				047C438F202D7D0F00BB3400 /* Products */,
 				C3B9C6C4C512424D17A455D9 /* Pods */,
@@ -259,7 +260,6 @@
 		047C4390202D7D0F00BB3400 /* SocketIMDemo */ = {
 			isa = PBXGroup;
 			children = (
-				04E9325220593C9C00677EDE /* readme.md */,
 				048569302060F9C9007C4C53 /* iOS代码规范文档.pdf */,
 				047297EF205A974300930A83 /* AppDelegate */,
 				047297FC205A974C00930A83 /* Utikles */,
@@ -355,7 +355,7 @@
 			files = (
 				047C439E202D7D0F00BB3400 /* LaunchScreen.storyboard in Resources */,
 				047C439B202D7D0F00BB3400 /* Assets.xcassets in Resources */,
-				04E9325320593C9C00677EDE /* readme.md in Resources */,
+				0485694F2061F9C1007C4C53 /* README.md in Resources */,
 				048569312060F9C9007C4C53 /* iOS代码规范文档.pdf in Resources */,
 				04729822205A97D700930A83 /* Info.plist in Resources */,
 				047C4399202D7D0F00BB3400 /* Main.storyboard in Resources */,
