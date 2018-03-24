@@ -7,13 +7,13 @@
 //
 
 #import "AppDelegate.h"
-#import "ChatSocketServer.h"
+#import "IMSocketServer.h"
 
 @implementation AppDelegate 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     //启动聊天服务器
-    [[ChatSocketServer server] start];
+    [[IMSocketServer server] start];
     return YES;
 }
 

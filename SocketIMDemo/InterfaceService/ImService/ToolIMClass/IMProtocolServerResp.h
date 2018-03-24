@@ -1,5 +1,5 @@
 //
-//  ProtocolServerResp.h
+//  IMProtocolServerResp.h
 //  SocketIMDemo
 //
 //  Created by 李勇 on 18/3/15.
@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 
 /**
- 服务器向客户端发送的data可以转变成该ProtocolServerResp对象在客户端进行处理
+ 服务器向客户端发送的data可以转变成该IMProtocolServerResp对象在客户端进行处理
  */
-@interface ProtocolServerResp : NSObject
+@interface IMProtocolServerResp : NSObject
 
-/**请求唯一标识符，和ProtocolClientReq的seq保持一致返回给客户端*/
+/**请求唯一标识符，和IMProtocolClientReq的seq保持一致返回给客户端*/
 @property(nonatomic, assign) int seq;
 /**服务器返回的包类型*/
 @property(nonatomic, assign) E_SERVER_PACK_TYPE type;

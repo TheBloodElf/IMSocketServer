@@ -7,11 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		047297E8205A973F00930A83 /* ChatSocketServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 047297D8205A973F00930A83 /* ChatSocketServer.m */; };
 		047297E9205A973F00930A83 /* IMSocketHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 047297DD205A973F00930A83 /* IMSocketHeader.m */; };
 		047297EC205A973F00930A83 /* IMSocketUserHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 047297E3205A973F00930A83 /* IMSocketUserHandler.m */; };
-		047297ED205A973F00930A83 /* ProtocolClientReq.m in Sources */ = {isa = PBXBuildFile; fileRef = 047297E5205A973F00930A83 /* ProtocolClientReq.m */; };
-		047297EE205A973F00930A83 /* ProtocolServerResp.m in Sources */ = {isa = PBXBuildFile; fileRef = 047297E7205A973F00930A83 /* ProtocolServerResp.m */; };
 		047297F2205A974300930A83 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 047297F1205A974300930A83 /* AppDelegate.m */; };
 		047297FB205A974700930A83 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 047297F9205A974700930A83 /* UserManager.m */; };
 		0472980F205A974C00930A83 /* NSString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 047297FF205A974C00930A83 /* NSString+Category.m */; };
@@ -30,21 +27,18 @@
 		047C439E202D7D0F00BB3400 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047C439C202D7D0F00BB3400 /* LaunchScreen.storyboard */; };
 		048569312060F9C9007C4C53 /* iOS代码规范文档.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 048569302060F9C9007C4C53 /* iOS代码规范文档.pdf */; };
 		0485694F2061F9C1007C4C53 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0485694E2061F9C1007C4C53 /* README.md */; };
+		04FC7A922065EA340085D9F2 /* IMProtocolServerResp.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FC7A8E2065EA340085D9F2 /* IMProtocolServerResp.m */; };
+		04FC7A932065EA340085D9F2 /* IMProtocolClientReq.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FC7A902065EA340085D9F2 /* IMProtocolClientReq.m */; };
+		04FC7A962065EAE70085D9F2 /* IMSocketServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FC7A942065EAE70085D9F2 /* IMSocketServer.m */; };
 		BB3DEFB7F44A3728ED0FDEF5 /* libPods-SocketIMDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 60E31DF6636A636A70262FDC /* libPods-SocketIMDemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		047297D7205A973F00930A83 /* ChatSocketServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatSocketServer.h; sourceTree = "<group>"; };
-		047297D8205A973F00930A83 /* ChatSocketServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatSocketServer.m; sourceTree = "<group>"; };
 		047297DB205A973F00930A83 /* IMSocketDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMSocketDefines.h; sourceTree = "<group>"; };
 		047297DC205A973F00930A83 /* IMSocketHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMSocketHeader.h; sourceTree = "<group>"; };
 		047297DD205A973F00930A83 /* IMSocketHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMSocketHeader.m; sourceTree = "<group>"; };
 		047297E2205A973F00930A83 /* IMSocketUserHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMSocketUserHandler.h; sourceTree = "<group>"; };
 		047297E3205A973F00930A83 /* IMSocketUserHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMSocketUserHandler.m; sourceTree = "<group>"; };
-		047297E4205A973F00930A83 /* ProtocolClientReq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolClientReq.h; sourceTree = "<group>"; };
-		047297E5205A973F00930A83 /* ProtocolClientReq.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtocolClientReq.m; sourceTree = "<group>"; };
-		047297E6205A973F00930A83 /* ProtocolServerResp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolServerResp.h; sourceTree = "<group>"; };
-		047297E7205A973F00930A83 /* ProtocolServerResp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtocolServerResp.m; sourceTree = "<group>"; };
 		047297F0205A974300930A83 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		047297F1205A974300930A83 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		047297F8205A974700930A83 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
@@ -78,6 +72,12 @@
 		047C439D202D7D0F00BB3400 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		048569302060F9C9007C4C53 /* iOS代码规范文档.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "iOS代码规范文档.pdf"; sourceTree = "<group>"; };
 		0485694E2061F9C1007C4C53 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		04FC7A8E2065EA340085D9F2 /* IMProtocolServerResp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMProtocolServerResp.m; sourceTree = "<group>"; };
+		04FC7A8F2065EA340085D9F2 /* IMProtocolServerResp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMProtocolServerResp.h; sourceTree = "<group>"; };
+		04FC7A902065EA340085D9F2 /* IMProtocolClientReq.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMProtocolClientReq.m; sourceTree = "<group>"; };
+		04FC7A912065EA340085D9F2 /* IMProtocolClientReq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMProtocolClientReq.h; sourceTree = "<group>"; };
+		04FC7A942065EAE70085D9F2 /* IMSocketServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMSocketServer.m; sourceTree = "<group>"; };
+		04FC7A952065EAE70085D9F2 /* IMSocketServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMSocketServer.h; sourceTree = "<group>"; };
 		158F2C10FF848294CACF75F3 /* Pods-SocketIMDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocketIMDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SocketIMDemo/Pods-SocketIMDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		2409064FD3F8FEF9220BAB7E /* Pods-SocketIMDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocketIMDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-SocketIMDemo/Pods-SocketIMDemo.release.xcconfig"; sourceTree = "<group>"; };
 		60E31DF6636A636A70262FDC /* libPods-SocketIMDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SocketIMDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,8 +107,8 @@
 		047297D5205A973F00930A83 /* ImService */ = {
 			isa = PBXGroup;
 			children = (
-				047297D7205A973F00930A83 /* ChatSocketServer.h */,
-				047297D8205A973F00930A83 /* ChatSocketServer.m */,
+				04FC7A952065EAE70085D9F2 /* IMSocketServer.h */,
+				04FC7A942065EAE70085D9F2 /* IMSocketServer.m */,
 				047297DA205A973F00930A83 /* ToolIMClass */,
 			);
 			path = ImService;
@@ -122,10 +122,10 @@
 				047297DD205A973F00930A83 /* IMSocketHeader.m */,
 				047297E2205A973F00930A83 /* IMSocketUserHandler.h */,
 				047297E3205A973F00930A83 /* IMSocketUserHandler.m */,
-				047297E4205A973F00930A83 /* ProtocolClientReq.h */,
-				047297E5205A973F00930A83 /* ProtocolClientReq.m */,
-				047297E6205A973F00930A83 /* ProtocolServerResp.h */,
-				047297E7205A973F00930A83 /* ProtocolServerResp.m */,
+				04FC7A912065EA340085D9F2 /* IMProtocolClientReq.h */,
+				04FC7A902065EA340085D9F2 /* IMProtocolClientReq.m */,
+				04FC7A8F2065EA340085D9F2 /* IMProtocolServerResp.h */,
+				04FC7A8E2065EA340085D9F2 /* IMProtocolServerResp.m */,
 			);
 			path = ToolIMClass;
 			sourceTree = "<group>";
@@ -417,8 +417,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04FC7A932065EA340085D9F2 /* IMProtocolClientReq.m in Sources */,
 				047297F2205A974300930A83 /* AppDelegate.m in Sources */,
-				047297EE205A973F00930A83 /* ProtocolServerResp.m in Sources */,
 				04729812205A974C00930A83 /* MCJSONPrimaryKeyTransformer.m in Sources */,
 				04729811205A974C00930A83 /* MCJSONNonNullStringTransformer.m in Sources */,
 				047297FB205A974700930A83 /* UserManager.m in Sources */,
@@ -428,12 +428,12 @@
 				04729823205A97D700930A83 /* main.m in Sources */,
 				04729814205A974C00930A83 /* RLMObject+Copying.m in Sources */,
 				0472980F205A974C00930A83 /* NSString+Category.m in Sources */,
+				04FC7A922065EA340085D9F2 /* IMProtocolServerResp.m in Sources */,
 				047297E9205A973F00930A83 /* IMSocketHeader.m in Sources */,
+				04FC7A962065EAE70085D9F2 /* IMSocketServer.m in Sources */,
 				04729810205A974C00930A83 /* MCJSONDateTransformer.m in Sources */,
 				04729815205A974C00930A83 /* RLMObject+JSON.m in Sources */,
 				04729813205A974C00930A83 /* MCJSONValueTransformer.m in Sources */,
-				047297E8205A973F00930A83 /* ChatSocketServer.m in Sources */,
-				047297ED205A973F00930A83 /* ProtocolClientReq.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

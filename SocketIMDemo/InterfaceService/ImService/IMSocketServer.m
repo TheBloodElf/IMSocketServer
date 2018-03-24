@@ -1,17 +1,17 @@
 //
-//  ChatSocketServer.m
+//  IMSocketServer.m
 //  SocketIMDemo
 //
 //  Created by 李勇 on 18/3/15.
 //  Copyright (c) 2018年李勇. All rights reserved.
 //
 
-#import "ChatSocketServer.h"
+#import "IMSocketServer.h"
 
 //Models
 #import "IMSocketHeader.h"
-#import "ProtocolClientReq.h"
-#import "ProtocolServerResp.h"
+#import "IMProtocolClientReq.h"
+#import "IMProtocolServerResp.h"
 
 //SocketHandlers
 #import "IMSocketUserHandler.h"
@@ -35,7 +35,7 @@
 
 @end
 
-@interface ChatSocketServer ()<GCDAsyncSocketDelegate> {
+@interface IMSocketServer ()<GCDAsyncSocketDelegate> {
     /**用于监听客户端连接的socket*/
     GCDAsyncSocket *_gCDAsyncSocket;
     
@@ -45,10 +45,10 @@
 
 @end
 
-@implementation ChatSocketServer
+@implementation IMSocketServer
 
-/**ChatSocketServer单例对象*/
-static ChatSocketServer * _socketServerInstance;
+/**IMSocketServer单例对象*/
+static IMSocketServer * _socketServerInstance;
 
 #pragma mark -- Init Methods
 
@@ -281,8 +281,8 @@ static ChatSocketServer * _socketServerInstance;
 - (void)socketUser:(ChatSocketUser*)socketUser handleLoginHeader:(IMSocketHeader *)header bodyData:(NSData *)bodyData {
     //加解密
     [self socketUser:socketUser encryptData:bodyData];
-    //把用户发来的数据转成ProtocolClientReq对象
-    ProtocolClientReq *protocolClientReq = [ProtocolClientReq new];
+    //把用户发来的数据转成IMProtocolClientReq对象
+    IMProtocolClientReq *protocolClientReq = [IMProtocolClientReq new];
     NSString *clientReqString = [[NSString alloc] initWithData:bodyData encoding:NSUTF8StringEncoding];
     [protocolClientReq mj_setKeyValues:[clientReqString mj_keyValues]];
     //我们需要取出该用户的登录信息
@@ -294,7 +294,7 @@ static ChatSocketServer * _socketServerInstance;
        [NSString isBlank:loginReq.client_version] ||
        ![loginReq.passwd isEqualToString:@"bb_password"]) {
         //向该用户发送错误信息
-        ProtocolServerResp *serverResp = [ProtocolServerResp new];
+        IMProtocolServerResp *serverResp = [IMProtocolServerResp new];
         serverResp.seq = protocolClientReq.seq;
         serverResp.type = PACK_TYPE_RESP;
         //设置为登录信息错误
@@ -318,7 +318,7 @@ static ChatSocketServer * _socketServerInstance;
     //如果用户已经存在，就通知旧用户被踢下线
     if(oldSocketUser != nil) {
         //向该用户发送被踢下线通知
-        ProtocolServerResp *serverResp = [ProtocolServerResp new];
+        IMProtocolServerResp *serverResp = [IMProtocolServerResp new];
         serverResp.seq = protocolClientReq.seq;
         serverResp.type = PACK_TYPE_RESP;
         serverResp.code = E_SOCKET_ERROR_NONE;
@@ -347,7 +347,7 @@ static ChatSocketServer * _socketServerInstance;
     socketUser.lastHeartTime = [NSDate new].timeIntervalSince1970 * 1000;
     socketUser.socketStatus = USER_SOCKET_STATUS_ONLINE;
     //给该用户发送登录成功的信息
-    ProtocolServerResp *serverResp = [ProtocolServerResp new];
+    IMProtocolServerResp *serverResp = [IMProtocolServerResp new];
     serverResp.seq = protocolClientReq.seq;
     serverResp.type = PACK_TYPE_RESP;
     serverResp.code = E_SOCKET_ERROR_NONE;

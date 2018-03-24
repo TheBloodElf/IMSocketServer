@@ -8,11 +8,11 @@
 
 #import "ViewController.h"
 
-#import "ChatSocketServer.h"
+#import "IMSocketServer.h"
 
 @interface ViewController () {
     /**聊天服务器对象*/
-    ChatSocketServer *_chatSocketServer;
+    IMSocketServer *_chatSocketServer;
 }
 
 @end
@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //初始化服务器
-    _chatSocketServer = [ChatSocketServer server];
+    _chatSocketServer = [IMSocketServer server];
 }
 
 #pragma mark -- Function Methods

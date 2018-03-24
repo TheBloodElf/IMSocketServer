@@ -1,5 +1,5 @@
 //
-//  ChatSocketServer.h
+//  IMSocketServer.h
 //  SocketIMDemo
 //
 //  Created by 李勇 on 18/3/15.
@@ -39,7 +39,7 @@ typedef NS_ENUM(NSUInteger, USER_SOCKET_STATUS) {
 /**
  聊天服务器
  */
-@interface ChatSocketServer : NSObject
+@interface IMSocketServer : NSObject
 
 /**所有连接的用户 服务器会在下面的这种情况下删除对应对象
  1：某个用户断开连接（退出登录服务器被动断开，被挤下线服务器主动断开）
@@ -47,9 +47,9 @@ typedef NS_ENUM(NSUInteger, USER_SOCKET_STATUS) {
 @property (nonatomic, strong) NSMutableArray<ChatSocketUser*> *allChatUsers;
 
 /**
- 创建ChatSocketServer单例
+ 创建IMSocketServer单例
 
- @return ChatSocketServer单例对象
+ @return IMSocketServer单例对象
  */
 + (instancetype)server;
 
