@@ -6,34 +6,27 @@
 //  Copyright (c) 2018年李勇. All rights reserved.
 //
 
-#import "UserManager.h"
+#import "IMUserManager.h"
 
 /**UserManager单例对象*/
-static UserManager *_userManagerInstance;
+static IMUserManager *_userManagerInstance;
 
-@interface UserManager () {
+@interface IMUserManager () {
     /**realm数据库路径*/
     NSString *_pathUrl;
     /**主线程创建的realm数据库对象  用来创建数据观察者使用*/
     RLMRealm *_mainThreadRLMRealm;
-    /**增加一个操作队列，让数据库的操作顺序执行，这样可以避免inWriteTransaction问题*/
-    NSOperationQueue *_dataOperationQueue;
 }
 
 @end
 
-@implementation UserManager
+@implementation IMUserManager
 
 #pragma mark -- Init Methods
 
 - (instancetype)init {
     self = [super init];
     if (self) {
-        //初始化数据库操作队列
-        _dataOperationQueue = [NSOperationQueue new];
-        //这里最大操作数设置为4个，因为是运行在子线程，每个子线程一个realm实例，所以不会出现inWriteTransaction错误
-        _dataOperationQueue.maxConcurrentOperationCount = 4;
-        _dataOperationQueue.name = @"RealmOperationQueue";
         //得到用户对应的数据库路径
         NSArray *pathArr = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
         _pathUrl = pathArr[0];
@@ -66,6 +59,23 @@ static UserManager *_userManagerInstance;
         _userManagerInstance = [[self class] new];
     });
     return _userManagerInstance;
+}
+
+- (void)updateIMMsgContent:(IMMsgContent*)msgContent {
+    RLMRealm *rlmRealm = [self currThreadRealmInstance];
+    [rlmRealm beginWriteTransaction];
+    [IMMsgContent createOrUpdateInRealm:rlmRealm withValue:msgContent];
+    [rlmRealm commitWriteTransaction];
+}
+
+- (IMMsgContent*)iMMsgContent:(int64_t)msgId {
+    IMMsgContent *content = [IMMsgContent new];
+    RLMRealm *rlmRealm = [self currThreadRealmInstance];
+    RLMResults *results = [IMMsgContent objectsInRealm:rlmRealm withPredicate:[NSPredicate predicateWithFormat:@"msg_id = %@",@(msgId)]];
+    if(results.count) {
+        content = [[results objectAtIndex:0] deepCopy];
+    }
+    return content;
 }
 
 @end

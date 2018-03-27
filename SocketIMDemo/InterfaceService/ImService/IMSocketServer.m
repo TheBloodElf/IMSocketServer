@@ -13,8 +13,12 @@
 #import "IMProtocolClientReq.h"
 #import "IMProtocolServerResp.h"
 
+//Managers
+#import "IMUserManager.h"
+
 //SocketHandlers
 #import "IMSocketUserHandler.h"
+#import "IMSocketMessageHandler.h"
 
 /**读取数据超时时间*/
 #define DF_SOCKET_READ_TIMEOUT      -1
@@ -38,6 +42,8 @@
 @interface IMSocketServer ()<GCDAsyncSocketDelegate> {
     /**用于监听客户端连接的socket*/
     GCDAsyncSocket *_gCDAsyncSocket;
+    /**数据管理器*/
+    IMUserManager *_iMUserManager;
     
     /**检测心跳的定时器*/
     NSTimer *_heartbeatTimer;
@@ -57,6 +63,7 @@ static IMSocketServer * _socketServerInstance;
         _allChatUsers = [@[] mutableCopy];
         //在子线程监听客户端连接
         _gCDAsyncSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_global_queue(0, 0)];
+        _iMUserManager = [IMUserManager manager];
     }
     return self;
 }
@@ -268,7 +275,90 @@ static IMSocketServer * _socketServerInstance;
  @param bodyData 包体
  */
 - (void)socketUser:(ChatSocketUser*)socketUser handleCommonHeader:(IMSocketHeader *)header bodyData:(NSData *)bodyData {
+    //加解密
+    [self socketUser:socketUser encryptData:bodyData];
+    //把用户发来的数据转成IMProtocolClientReq对象
+    IMProtocolClientReq *protocolClientReq = [IMProtocolClientReq new];
+    NSString *clientReqString = [[NSString alloc] initWithData:bodyData encoding:NSUTF8StringEncoding];
+    [protocolClientReq mj_setKeyValues:[clientReqString mj_keyValues]];
     
+    //某人发送消息
+    if([protocolClientReq.sub_cmd isEqualToString:@"send"]) {
+        //获取消息内容
+        MsgContent *content = [MsgContent new];
+        [content mj_setKeyValues:[protocolClientReq.body mj_keyValues]];
+        //给发送方返回发送成功的消息
+        IMProtocolServerResp *serverResp = [IMProtocolServerResp new];
+        serverResp.seq = protocolClientReq.seq;
+        serverResp.type = PACK_TYPE_RESP;
+        serverResp.code = E_SOCKET_ERROR_NONE;
+        serverResp.cmd = protocolClientReq.cmd;
+        serverResp.sub_cmd = protocolClientReq.sub_cmd;
+        MsgSendResp *resp = [MsgSendResp new];
+        serverResp.body = resp.mj_keyValues.mj_JSONString;
+        //转换成data
+        NSData *serverRespData = [serverResp.mj_keyValues.mj_JSONString dataUsingEncoding:NSUTF8StringEncoding];
+        //加解密
+        [self socketUser:socketUser encryptData:serverRespData];
+        //发送数据
+        [self socketUser:socketUser sendData:serverRespData headerType:E_SOCKET_HEADER_CMD_COMMON];
+        
+        //得到一条要存入数据库的消息
+        IMMsgContent *iMMsgContent = [IMMsgContent new];
+        [iMMsgContent mj_setKeyValues:[protocolClientReq.body mj_keyValues]];
+        iMMsgContent.is_read = NO;
+        [_iMUserManager updateIMMsgContent:iMMsgContent];
+        //判断对方是否在线 如果在线就发送消息
+        ChatSocketUser *reciverUser = [self socketUserWithImid:content.reciver_imid];
+        if(reciverUser != nil && reciverUser.socketStatus == USER_SOCKET_STATUS_ONLINE) {
+            IMProtocolServerResp *serverResp = [IMProtocolServerResp new];
+            serverResp.seq = protocolClientReq.seq;
+            serverResp.type = PACK_TYPE_RESP;
+            serverResp.code = E_SOCKET_ERROR_NONE;
+            serverResp.cmd = protocolClientReq.cmd;
+            serverResp.sub_cmd = @"push";
+            //内容
+            MsgPushNotify *pushNotify = [MsgPushNotify new];
+            pushNotify.sender_imid = content.sender_imid;
+            pushNotify.reciver_imid = content.reciver_imid;
+            pushNotify.msg_id = content.msg_id;
+            pushNotify.time = content.time;
+            pushNotify.msg_data = content.msg_data;
+            serverResp.body = pushNotify.mj_keyValues.mj_JSONString;
+            //转换成data
+            NSData *serverRespData = [serverResp.mj_keyValues.mj_JSONString dataUsingEncoding:NSUTF8StringEncoding];
+            //加解密
+            [self socketUser:socketUser encryptData:serverRespData];
+            //发送数据
+            [self socketUser:socketUser sendData:serverRespData headerType:E_SOCKET_HEADER_CMD_COMMON];
+        }
+    }
+    //消息回执
+    if([protocolClientReq.sub_cmd isEqualToString:@"send_ack"]) {
+        //获取消息内容
+        MsgAckContent *content = [MsgAckContent new];
+        [content mj_setKeyValues:[protocolClientReq.body mj_keyValues]];
+        //获取数据库中该条消息，设置已读状态
+        IMMsgContent *msgContent = [_iMUserManager iMMsgContent:content.ack_msgid];
+        msgContent.is_read = YES;
+        [_iMUserManager updateIMMsgContent:msgContent];
+        
+        //给该用户发送成功消息
+        IMProtocolServerResp *serverResp = [IMProtocolServerResp new];
+        serverResp.seq = protocolClientReq.seq;
+        serverResp.type = PACK_TYPE_RESP;
+        serverResp.code = E_SOCKET_ERROR_NONE;
+        serverResp.cmd = protocolClientReq.cmd;
+        serverResp.sub_cmd = protocolClientReq.sub_cmd;
+        MsgSendAckResp *resp = [MsgSendAckResp new];
+        serverResp.body = resp.mj_keyValues.mj_JSONString;
+        //转换成data
+        NSData *serverRespData = [serverResp.mj_keyValues.mj_JSONString dataUsingEncoding:NSUTF8StringEncoding];
+        //加解密
+        [self socketUser:socketUser encryptData:serverRespData];
+        //发送数据
+        [self socketUser:socketUser sendData:serverRespData headerType:E_SOCKET_HEADER_CMD_COMMON];
+    }
 }
 
 /**

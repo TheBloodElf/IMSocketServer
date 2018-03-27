@@ -22,7 +22,7 @@
 - (id)primaryKeyValue;
 + (id)primaryKeyValueFromJSONDictionary:(NSDictionary *)dictionary;
 
-- (void)performInTransaction:(void (^)())transaction;
+- (void)performInTransaction:(void (^)(void))transaction;
 - (void)removeFromRealm;
 //值是不是一样
 + (BOOL)values:(RLMObject*)object1 isEqual:(RLMObject*)object2;

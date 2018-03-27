@@ -15,5 +15,6 @@
 
 #import "NSString+Category.h"
 #import "RLMObject+Copying.h"
+#import "RLMObject+JSON.h"
 
 #endif /* Utikles_h */
