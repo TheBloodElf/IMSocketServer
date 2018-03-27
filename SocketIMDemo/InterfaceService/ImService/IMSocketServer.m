@@ -313,7 +313,7 @@ static IMSocketServer * _socketServerInstance;
         if(reciverUser != nil && reciverUser.socketStatus == USER_SOCKET_STATUS_ONLINE) {
             IMProtocolServerResp *serverResp = [IMProtocolServerResp new];
             serverResp.seq = protocolClientReq.seq;
-            serverResp.type = PACK_TYPE_RESP;
+            serverResp.type = PACK_TYPE_NOTIFY;
             serverResp.code = E_SOCKET_ERROR_NONE;
             serverResp.cmd = protocolClientReq.cmd;
             serverResp.sub_cmd = @"push";
@@ -328,9 +328,9 @@ static IMSocketServer * _socketServerInstance;
             //转换成data
             NSData *serverRespData = [serverResp.mj_keyValues.mj_JSONString dataUsingEncoding:NSUTF8StringEncoding];
             //加解密
-            [self socketUser:socketUser encryptData:serverRespData];
+            [self socketUser:reciverUser encryptData:serverRespData];
             //发送数据
-            [self socketUser:socketUser sendData:serverRespData headerType:E_SOCKET_HEADER_CMD_COMMON];
+            [self socketUser:reciverUser sendData:serverRespData headerType:E_SOCKET_HEADER_CMD_COMMON];
         }
     }
     //消息回执
