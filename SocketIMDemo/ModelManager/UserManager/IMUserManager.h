@@ -7,6 +7,12 @@
 //
 
 #import "IMMsgContent.h"
+#import "IMServerLog.h"
+
+/**
+ 数据库中模型改变的回调通知
+ */
+typedef void(^modelChangeHandler)(void);
 
 /**
  数据库管理器，所有的数据操作通过本类完成
@@ -40,5 +46,25 @@
  @return 聊天消息
  */
 - (IMMsgContent*)iMMsgContent:(int64_t)msgId;
+/**
+ 创建或更新日志消息
+ 
+ @param serverLog 日志内容
+ */
+- (void)updateServerLog:(IMServerLog*)serverLog;
+
+/**
+ 获取所有的日志
+ 
+ @return 日志
+ */
+- (NSMutableArray<IMServerLog*>*)allServerLogs;
+
+/**
+ 创建日志的数据库观察者
+ 
+ @param changeHandler 回调通知
+ */
+- (void)addServerLogChangeListener:(modelChangeHandler)changeHandler;
 
 @end

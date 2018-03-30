@@ -16,5 +16,8 @@
 #import "NSString+Category.h"
 #import "RLMObject+Copying.h"
 #import "RLMObject+JSON.h"
+#import "NSDate+Format.h"
+
+#import "CMDeviceInfo.h"
 
 #endif /* Utikles_h */

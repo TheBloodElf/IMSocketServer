@@ -89,6 +89,7 @@ static IMSocketServer * _socketServerInstance;
             //超过5s则设置为离线状态
             if(nowTime - 5000 > currModelLastHeartTime) {
                 socketModel.socketStatus = USER_SOCKET_STATUS_OFFLINE;
+                [[IMUserManager manager] updateServerLog:[IMServerLog clientLogWithMessage:[NSString stringWithFormat:@"检测到用户：%@处于离线状态。",@(socketModel.imid)]]];
             }
         }
     }
@@ -256,6 +257,7 @@ static IMSocketServer * _socketServerInstance;
  @param bodyData 包体
  */
 - (void)socketUser:(ChatSocketUser*)socketUser handleHandShakeHeader:(IMSocketHeader *)header bodyData:(NSData *)bodyData {
+    [[IMUserManager manager] updateServerLog:[IMServerLog clientLogWithMessage:[NSString stringWithFormat:@"收到用户登录前握手消息。"]]];
     //随机获取一个加密字符
     NSString *cryptKey = @((int64_t)[NSDate new].timeIntervalSince1970 % 10).stringValue;
     NSData *cryptKeyData = [cryptKey dataUsingEncoding:NSUTF8StringEncoding];
@@ -287,6 +289,7 @@ static IMSocketServer * _socketServerInstance;
         //获取消息内容
         MsgContent *content = [MsgContent new];
         [content mj_setKeyValues:[protocolClientReq.body mj_keyValues]];
+        [[IMUserManager manager] updateServerLog:[IMServerLog clientLogWithMessage:[NSString stringWithFormat:@"收到用户：%@向用户：%@发送的消息：%@。",@(content.sender_imid),@(content.reciver_imid),@(content.msg_id)]]];
         //给发送方返回发送成功的消息
         IMProtocolServerResp *serverResp = [IMProtocolServerResp new];
         serverResp.seq = protocolClientReq.seq;
@@ -298,6 +301,7 @@ static IMSocketServer * _socketServerInstance;
         serverResp.body = resp.mj_keyValues.mj_JSONString;
         //转换成data
         NSData *serverRespData = [serverResp.mj_keyValues.mj_JSONString dataUsingEncoding:NSUTF8StringEncoding];
+        [[IMUserManager manager] updateServerLog:[IMServerLog clientLogWithMessage:[NSString stringWithFormat:@"向用户：%@发送消息：%@发送成功消息。",@(content.sender_imid),@(content.msg_id)]]];
         //加解密
         [self socketUser:socketUser encryptData:serverRespData];
         //发送数据
@@ -306,11 +310,12 @@ static IMSocketServer * _socketServerInstance;
         //得到一条要存入数据库的消息
         IMMsgContent *iMMsgContent = [IMMsgContent new];
         [iMMsgContent mj_setKeyValues:[protocolClientReq.body mj_keyValues]];
-        iMMsgContent.is_read = NO;
         [_iMUserManager updateIMMsgContent:iMMsgContent];
+        
         //判断对方是否在线 如果在线就发送消息
         ChatSocketUser *reciverUser = [self socketUserWithImid:content.reciver_imid];
         if(reciverUser != nil && reciverUser.socketStatus == USER_SOCKET_STATUS_ONLINE) {
+            [[IMUserManager manager] updateServerLog:[IMServerLog clientLogWithMessage:[NSString stringWithFormat:@"用户：%@在线，向用户：%@发送消息：%@。",@(content.reciver_imid),@(content.reciver_imid),@(content.msg_id)]]];
             IMProtocolServerResp *serverResp = [IMProtocolServerResp new];
             serverResp.seq = protocolClientReq.seq;
             serverResp.type = PACK_TYPE_NOTIFY;
@@ -332,17 +337,15 @@ static IMSocketServer * _socketServerInstance;
             //发送数据
             [self socketUser:reciverUser sendData:serverRespData headerType:E_SOCKET_HEADER_CMD_COMMON];
         }
+        else {
+            [[IMUserManager manager] updateServerLog:[IMServerLog clientLogWithMessage:[NSString stringWithFormat:@"用户：%@不在线。",@(content.reciver_imid)]]];
+        }
     }
     //消息回执
     if([protocolClientReq.sub_cmd isEqualToString:@"send_ack"]) {
-        //获取消息内容
-        MsgAckContent *content = [MsgAckContent new];
-        [content mj_setKeyValues:[protocolClientReq.body mj_keyValues]];
-        //获取数据库中该条消息，设置已读状态
-        IMMsgContent *msgContent = [_iMUserManager iMMsgContent:content.ack_msgid];
-        msgContent.is_read = YES;
-        [_iMUserManager updateIMMsgContent:msgContent];
-        
+        MsgAckContent *ackContent = [MsgAckContent new];
+        [ackContent mj_setKeyValues:[protocolClientReq.body mj_keyValues]];
+        [[IMUserManager manager] updateServerLog:[IMServerLog clientLogWithMessage:[NSString stringWithFormat:@"收到用户：%@的ack消息：%@。",@(socketUser.imid),@(ackContent.ack_msgid)]]];
         //给该用户发送成功消息
         IMProtocolServerResp *serverResp = [IMProtocolServerResp new];
         serverResp.seq = protocolClientReq.seq;
@@ -378,11 +381,13 @@ static IMSocketServer * _socketServerInstance;
     //我们需要取出该用户的登录信息
     UserLoginReq *loginReq = [UserLoginReq new];
     [loginReq mj_setKeyValues:[protocolClientReq.body mj_keyValues]];
+    [[IMUserManager manager] updateServerLog:[IMServerLog clientLogWithMessage:[NSString stringWithFormat:@"收到用户登录消息。"]]];
     //判断登录信息是否正确 各项信息是否都有
     if([NSString isBlank:loginReq.username] ||
        [NSString isBlank:loginReq.device_token] ||
        [NSString isBlank:loginReq.client_version] ||
        ![loginReq.passwd isEqualToString:@"bb_password"]) {
+        [[IMUserManager manager] updateServerLog:[IMServerLog clientLogWithMessage:[NSString stringWithFormat:@"向用户：%@发送登陆失败消息。",@(socketUser.imid)]]];
         //向该用户发送错误信息
         IMProtocolServerResp *serverResp = [IMProtocolServerResp new];
         serverResp.seq = protocolClientReq.seq;
@@ -407,6 +412,7 @@ static IMSocketServer * _socketServerInstance;
     ChatSocketUser *oldSocketUser = [self socketUserWithImid:currUserImid];
     //如果用户已经存在，就通知旧用户被踢下线
     if(oldSocketUser != nil) {
+        [[IMUserManager manager] updateServerLog:[IMServerLog clientLogWithMessage:[NSString stringWithFormat:@"用户：%@在新的设备上登录，向之前的设备发送被踢消息。",@(currUserImid)]]];
         //向该用户发送被踢下线通知
         IMProtocolServerResp *serverResp = [IMProtocolServerResp new];
         serverResp.seq = protocolClientReq.seq;
@@ -433,6 +439,7 @@ static IMSocketServer * _socketServerInstance;
     }
     
     //设置该用户最新的信息
+    [[IMUserManager manager] updateServerLog:[IMServerLog clientLogWithMessage:[NSString stringWithFormat:@"向用户：%@发送登陆成功消息。",@(currUserImid)]]];
     socketUser.imid = currUserImid;
     socketUser.lastHeartTime = [NSDate new].timeIntervalSince1970 * 1000;
     socketUser.socketStatus = USER_SOCKET_STATUS_ONLINE;
@@ -467,6 +474,7 @@ static IMSocketServer * _socketServerInstance;
     socketUser.socketStatus = USER_SOCKET_STATUS_OFFLINE;
     //断开连接
     [socketUser.gCDAsyncSocket disconnect];
+    [[IMUserManager manager] updateServerLog:[IMServerLog clientLogWithMessage:[NSString stringWithFormat:@"服务器收到用户：%@的退出登录消息。",@(socketUser.imid)]]];
 }
 
 /**
@@ -479,7 +487,7 @@ static IMSocketServer * _socketServerInstance;
 - (void)socketUser:(ChatSocketUser*)socketUser handleKeepaliveHeader:(IMSocketHeader *)header bodyData:(NSData *)bodyData {
     //如果用户从离线变为在线，需要主动发送离线给该用户，如用户从后台变为前台，网络从不可用变成可用等情况
     if(socketUser.socketStatus == USER_SOCKET_STATUS_OFFLINE) {
-        //获取离线消息发送给该用户
+        [[IMUserManager manager] updateServerLog:[IMServerLog clientLogWithMessage:[NSString stringWithFormat:@"检测到用户：%@从离线变为在线状态。",@(socketUser.imid)]]];
     }
     //设置用户在线
     socketUser.socketStatus = USER_SOCKET_STATUS_ONLINE;
@@ -502,6 +510,7 @@ static IMSocketServer * _socketServerInstance;
     [_gCDAsyncSocket acceptOnPort:6868 error:nil];
     //不断的检测用户是否已经离线
     _heartbeatTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(handleTimeOutTimer) userInfo:nil repeats:YES];
+    [[IMUserManager manager] updateServerLog:[IMServerLog clientLogWithMessage:[NSString stringWithFormat:@"服务器在端口：6868启动，开始监听客户端连接。"]]];
 }
 
 #pragma makr -- GCDAsyncSocketDelegate
@@ -512,6 +521,7 @@ static IMSocketServer * _socketServerInstance;
     ChatSocketUser *socketUser = [ChatSocketUser new];
     socketUser.gCDAsyncSocket = newSocket;
     [_allChatUsers addObject:socketUser];
+    [[IMUserManager manager] updateServerLog:[IMServerLog clientLogWithMessage:[NSString stringWithFormat:@"服务器收到一个新的连接，当前连接数：%@。",@(_allChatUsers.count)]]];
     //继续接收数据
     [newSocket readDataWithTimeout:-1 tag:0];
 }
@@ -525,6 +535,8 @@ static IMSocketServer * _socketServerInstance;
 
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(nullable NSError *)err {
     //断开连接后，就从数组中删除对应socketUser对象
+    ChatSocketUser *socketUser = [self socketUserWithAsyncSocket:sock];
+    [[IMUserManager manager] updateServerLog:[IMServerLog clientLogWithMessage:[NSString stringWithFormat:@"服务器已经释放用户：%@的所有资源。",@(socketUser.imid)]]];
     //通知这也是唯一一个删除对应用户的时间点
     [_allChatUsers removeObject:[self socketUserWithAsyncSocket:sock]];
 }

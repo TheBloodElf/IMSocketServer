@@ -18,6 +18,7 @@ typedef NS_ENUM(NSUInteger, USER_SOCKET_STATUS) {
 
 /**
  与服务器连接的每一个用户对应一个该类
+ 负载均衡 https://www.zhihu.com/question/22610352
  */
 @interface ChatSocketUser : NSObject
 
