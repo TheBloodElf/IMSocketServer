@@ -7,8 +7,6 @@
 //
 
 #import "CMDeviceInfo.h"
-#import "sys/utsname.h"
-#import "sys/utsname.h"
 
 @implementation CMDeviceInfo
 

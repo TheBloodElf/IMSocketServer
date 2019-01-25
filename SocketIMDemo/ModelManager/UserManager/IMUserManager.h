@@ -12,7 +12,7 @@
 /**
  数据库中模型改变的回调通知
  */
-typedef void(^modelChangeHandler)(void);
+typedef void(^ModelChangeHandler)(void);
 
 /**
  数据库管理器，所有的数据操作通过本类完成
@@ -32,6 +32,8 @@ typedef void(^modelChangeHandler)(void);
  */
 + (instancetype)manager;
 
+#pragma mark - IMMsgContent
+
 /**
  更新聊天消息
 
@@ -46,6 +48,9 @@ typedef void(^modelChangeHandler)(void);
  @return 聊天消息
  */
 - (IMMsgContent*)iMMsgContent:(int64_t)msgId;
+
+#pragma mark - IMServerLog
+
 /**
  创建或更新日志消息
  
@@ -65,6 +70,6 @@ typedef void(^modelChangeHandler)(void);
  
  @param changeHandler 回调通知
  */
-- (void)addServerLogChangeListener:(modelChangeHandler)changeHandler;
+- (void)addServerLogChangeListener:(ModelChangeHandler)changeHandler;
 
 @end

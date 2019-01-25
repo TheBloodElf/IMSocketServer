@@ -7,8 +7,11 @@
 //
 
 #import "AppDelegate.h"
+
+//Tools
 #import "IMSocketServer.h"
 
+//Controllers
 #import "ChatMineController.h"
 
 @implementation AppDelegate 
@@ -18,7 +21,9 @@
     [[IMSocketServer server] start];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[ChatMineController new]];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[ChatMineController new]];
+    navigationController.navigationBar.translucent = NO;
+    self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
     
     return YES;

@@ -11,8 +11,8 @@
  */
 @interface UserLoginReq : NSObject
 
-/**用户名 为用户体系的uid字符串*/
-@property (nonatomic, strong) NSString* username;
+/**用户uid*/
+@property (nonatomic, assign) int64_t imid;
 /**密码，因为服务器不做用户验证处理，所以只需要为@"bb_password"即可*/
 @property (nonatomic, strong) NSString* passwd;
 /**客户端版本号*/

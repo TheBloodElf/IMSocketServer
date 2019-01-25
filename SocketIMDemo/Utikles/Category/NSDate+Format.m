@@ -10,14 +10,6 @@
 
 @implementation NSDate (Format)
 
-@dynamic year;
-@dynamic month;
-@dynamic day;
-@dynamic hour;
-@dynamic minute;
-@dynamic second;
-@dynamic weekday;
-
 - (NSInteger)year {
     return [[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:self].year;
 }
@@ -36,12 +28,18 @@
 - (NSInteger)second {
     return [[NSCalendar currentCalendar] components:NSCalendarUnitSecond fromDate:self].second;
 }
-//周几
 - (NSInteger)weekday {
     //这里会差一天 我也是醉了
     NSInteger week = [[NSCalendar currentCalendar] components:NSCalendarUnitWeekday fromDate:self].weekday;
     week = week - 1;
     return week ?: 7;
+}
++ (NSDate*)dateWithFormat:(NSString *)format
+{
+    NSDateFormatter * df2 = [[NSDateFormatter alloc] init];
+    [df2 setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate * date =[df2 dateFromString:format];
+    return date;
 }
 - (NSString*)weekdayStr {
     NSString *weekday = nil;
@@ -71,13 +69,6 @@
     currSecond = currSecond - 1;
     NSDate * currDate = [NSDate dateWithTimeIntervalSince1970:currSecond];
     return currDate;
-}
-+ (NSDate*)dateWithFormat:(NSString *)format
-{
-    NSDateFormatter * df2 = [[NSDateFormatter alloc] init];
-    [df2 setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSDate * date =[df2 dateFromString:format];
-    return date;
 }
 - (NSTimeInterval)differTimeIntervalToDate:(NSDate*)date {
     NSTimeInterval targetTimeInterval = self.timeIntervalSince1970;

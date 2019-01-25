@@ -49,16 +49,18 @@
     NSTimer *_heartbeatTimer;
 }
 
+/**所有连接的用户 服务器会在下面的这种情况下删除对应对象
+ 1：某个用户断开连接（退出登录服务器被动断开，被挤下线服务器主动断开）
+ 做以上处理，只是为了保证：一个用户在该数组中只有一个对象*/
+@property (nonatomic, strong) NSMutableArray<ChatSocketUser*> *allChatUsers;
+
 @end
 
 @implementation IMSocketServer
 
-/**IMSocketServer单例对象*/
-static IMSocketServer * _socketServerInstance;
-
 #pragma mark -- Init Methods
 
-- (id)init {
+- (instancetype)init {
     if (self = [super init]) {
         _allChatUsers = [@[] mutableCopy];
         //在子线程监听客户端连接
@@ -193,14 +195,15 @@ static IMSocketServer * _socketServerInstance;
     NSData *dataBody = [socketUser.mutableData subdataWithRange:NSMakeRange(DF_SOCKET_HEADER_LENGTH, header.body_len)];
     //收到了一个完整的数据
     [self socketUser:socketUser didReceiveWithHeader:header bodyData:dataBody];
-    //如果数据中有超过一个完整包的部分，去除头与body，保留剩余部分，再次解析 粘包
+    //如果数据中有超过一个完整包的部分，去除头与body，保留剩余部分，再次解析 粘包情况
     if ([socketUser.mutableData length] - DF_SOCKET_HEADER_LENGTH - header.body_len > 0) {
         NSInteger loc = DF_SOCKET_HEADER_LENGTH + header.body_len;
         NSInteger len = [socketUser.mutableData length] - loc;
         [socketUser.mutableData setData:[socketUser.mutableData subdataWithRange:NSMakeRange(loc, len)]];
         [self tryParseReceivedData:socketUser];
     }
-    else {//出现错误，去掉这部分数据
+    //出现错误，去掉这部分数据
+    else {
         [socketUser.mutableData setData:[NSData data]];
     }
 }
@@ -318,18 +321,19 @@ static IMSocketServer * _socketServerInstance;
             [[IMUserManager manager] updateServerLog:[IMServerLog clientLogWithMessage:[NSString stringWithFormat:@"用户：%@在线，向用户：%@发送消息：%@。",@(content.reciver_imid),@(content.reciver_imid),@(content.msg_id)]]];
             IMProtocolServerResp *serverResp = [IMProtocolServerResp new];
             serverResp.seq = protocolClientReq.seq;
-            serverResp.type = PACK_TYPE_NOTIFY;
+            serverResp.type = PACK_TYPE_TRANSMIT;
             serverResp.code = E_SOCKET_ERROR_NONE;
             serverResp.cmd = protocolClientReq.cmd;
-            serverResp.sub_cmd = @"push";
-            //内容
-            MsgPushNotify *pushNotify = [MsgPushNotify new];
-            pushNotify.sender_imid = content.sender_imid;
-            pushNotify.reciver_imid = content.reciver_imid;
-            pushNotify.msg_id = content.msg_id;
-            pushNotify.time = content.time;
-            pushNotify.msg_data = content.msg_data;
-            serverResp.body = pushNotify.mj_keyValues.mj_JSONString;
+            serverResp.sub_cmd = @"msg";
+            //聊天内容
+            MsgContent *msgContent = [MsgContent new];
+            msgContent.msg_id = content.msg_id;
+            msgContent.from_source_type = content.from_source_type;
+            msgContent.sender_imid = content.sender_imid;
+            msgContent.reciver_imid = content.reciver_imid;
+            msgContent.time = content.time;
+            msgContent.msg_data = content.msg_data;
+            serverResp.body = msgContent.mj_keyValues.mj_JSONString;
             //转换成data
             NSData *serverRespData = [serverResp.mj_keyValues.mj_JSONString dataUsingEncoding:NSUTF8StringEncoding];
             //加解密
@@ -383,7 +387,7 @@ static IMSocketServer * _socketServerInstance;
     [loginReq mj_setKeyValues:[protocolClientReq.body mj_keyValues]];
     [[IMUserManager manager] updateServerLog:[IMServerLog clientLogWithMessage:[NSString stringWithFormat:@"收到用户登录消息。"]]];
     //判断登录信息是否正确 各项信息是否都有
-    if([NSString isBlank:loginReq.username] ||
+    if(!loginReq.imid ||
        [NSString isBlank:loginReq.device_token] ||
        [NSString isBlank:loginReq.client_version] ||
        ![loginReq.passwd isEqualToString:@"bb_password"]) {
@@ -408,7 +412,7 @@ static IMSocketServer * _socketServerInstance;
     }
     
     //各项信息都是正确的，判断该用户是否已经存在
-    int64_t currUserImid = loginReq.username.longLongValue;
+    int64_t currUserImid = loginReq.imid;
     ChatSocketUser *oldSocketUser = [self socketUserWithImid:currUserImid];
     //如果用户已经存在，就通知旧用户被踢下线
     if(oldSocketUser != nil) {
@@ -498,18 +502,19 @@ static IMSocketServer * _socketServerInstance;
 #pragma mark -- Public Methods
 
 + (instancetype)server {
+    static IMSocketServer * iMSocketServer;
     static dispatch_once_t predicate;
     dispatch_once(&predicate, ^{
-        _socketServerInstance = [[self class] new];
+        iMSocketServer = [IMSocketServer new];
     });
-    return _socketServerInstance;
+    return iMSocketServer;
 }
 
 - (void)start {
     //开始监听
     [_gCDAsyncSocket acceptOnPort:6868 error:nil];
     //不断的检测用户是否已经离线
-    _heartbeatTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(handleTimeOutTimer) userInfo:nil repeats:YES];
+    _heartbeatTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(handleTimeOutTimer) userInfo:nil repeats:YES];
     [[IMUserManager manager] updateServerLog:[IMServerLog clientLogWithMessage:[NSString stringWithFormat:@"服务器在端口：6868启动，开始监听客户端连接。"]]];
 }
 
@@ -517,7 +522,7 @@ static IMSocketServer * _socketServerInstance;
 
 - (void)socket:(GCDAsyncSocket *)sock didAcceptNewSocket:(GCDAsyncSocket *)newSocket {
     //一个设备，建立多个连接，那么newSocket也会是不一样的，所以_allChatUsers中不会有两个一样的socket对象
-    //添加一个到数组中
+    //添加一个到数组中 这时候还没有imid
     ChatSocketUser *socketUser = [ChatSocketUser new];
     socketUser.gCDAsyncSocket = newSocket;
     [_allChatUsers addObject:socketUser];

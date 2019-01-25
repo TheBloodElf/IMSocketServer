@@ -42,11 +42,6 @@ typedef NS_ENUM(NSUInteger, USER_SOCKET_STATUS) {
  */
 @interface IMSocketServer : NSObject
 
-/**所有连接的用户 服务器会在下面的这种情况下删除对应对象
- 1：某个用户断开连接（退出登录服务器被动断开，被挤下线服务器主动断开）
- 做以上处理，只是为了保证：一个用户在该数组中只有一个对象*/
-@property (nonatomic, strong) NSMutableArray<ChatSocketUser*> *allChatUsers;
-
 /**
  创建IMSocketServer单例
 

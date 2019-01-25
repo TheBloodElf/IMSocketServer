@@ -26,7 +26,6 @@
 		04729814205A974C00930A83 /* RLMObject+Copying.m in Sources */ = {isa = PBXBuildFile; fileRef = 0472980C205A974C00930A83 /* RLMObject+Copying.m */; };
 		04729815205A974C00930A83 /* RLMObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 0472980E205A974C00930A83 /* RLMObject+JSON.m */; };
 		0472981D205A978900930A83 /* AppCustoms.m in Sources */ = {isa = PBXBuildFile; fileRef = 0472981C205A978900930A83 /* AppCustoms.m */; };
-		04729822205A97D700930A83 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0472981F205A97D700930A83 /* Info.plist */; };
 		04729823205A97D700930A83 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04729820205A97D700930A83 /* main.m */; };
 		047C439B202D7D0F00BB3400 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 047C439A202D7D0F00BB3400 /* Assets.xcassets */; };
 		047C439E202D7D0F00BB3400 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047C439C202D7D0F00BB3400 /* LaunchScreen.storyboard */; };
@@ -353,8 +352,6 @@
 				047C438A202D7D0F00BB3400 /* Sources */,
 				047C438B202D7D0F00BB3400 /* Frameworks */,
 				047C438C202D7D0F00BB3400 /* Resources */,
-				688CC96A531A04C0540C3C24 /* [CP] Embed Pods Frameworks */,
-				13AFDF08060D46B8E7608BD7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -408,56 +405,28 @@
 				0485694F2061F9C1007C4C53 /* README.md in Resources */,
 				042D9BD0206E7EA300A3CBFE /* ChatLogTableCell.xib in Resources */,
 				048569312060F9C9007C4C53 /* iOS代码规范文档.pdf in Resources */,
-				04729822205A97D700930A83 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		13AFDF08060D46B8E7608BD7 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SocketIMDemo/Pods-SocketIMDemo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		29391788BDAC42A079E08BBA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SocketIMDemo-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		688CC96A531A04C0540C3C24 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SocketIMDemo/Pods-SocketIMDemo-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -618,13 +587,16 @@
 			baseConfigurationReference = 158F2C10FF848294CACF75F3 /* Pods-SocketIMDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JG5S22U38L;
 				GCC_PREFIX_HEADER = "$(TARGET_NAME)/Supporting Files/PrefixHeader.pch";
 				INFOPLIST_FILE = "SocketIMDemo/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = fuck.SocketIMDemo.server;
+				PRODUCT_BUNDLE_IDENTIFIER = fuck.SocketIM.server;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -634,13 +606,16 @@
 			baseConfigurationReference = 2409064FD3F8FEF9220BAB7E /* Pods-SocketIMDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JG5S22U38L;
 				GCC_PREFIX_HEADER = "$(TARGET_NAME)/Supporting Files/PrefixHeader.pch";
 				INFOPLIST_FILE = "SocketIMDemo/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = fuck.SocketIMDemo.server;
+				PRODUCT_BUNDLE_IDENTIFIER = fuck.SocketIM.server;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

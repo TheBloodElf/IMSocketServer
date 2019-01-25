@@ -8,9 +8,6 @@
 
 #import "IMUserManager.h"
 
-/**UserManager单例对象*/
-static IMUserManager *_userManagerInstance;
-
 @interface IMUserManager () {
     /**realm数据库路径*/
     NSString *_pathUrl;
@@ -18,6 +15,9 @@ static IMUserManager *_userManagerInstance;
     RLMRealm *_mainThreadRLMRealm;
     /**持有RLMNotificationToken对象，不然创建后就消失了*/
     NSMutableArray<RLMNotificationToken*> *_allNotificationTokenArr;
+    
+    /**让更新数据库的操作异步串行执行，降低cpu峰值*/
+    NSOperationQueue *_operationQueue;
 }
 
 @end
@@ -28,17 +28,26 @@ static IMUserManager *_userManagerInstance;
 
 - (instancetype)init {
     self = [super init];
-    if (self) {
-        //得到用户对应的数据库路径
-        NSArray *pathArr = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
-        _pathUrl = pathArr[0];
-        //server是随便写的，因为服务器所有的数据都存在一个数据库
-        _pathUrl = [_pathUrl stringByAppendingPathComponent:@"server"];
-        //创建数据库
-        _mainThreadRLMRealm = [RLMRealm realmWithURL:[NSURL URLWithString:_pathUrl]];
-        //持有RLMNotificationToken对象
-        _allNotificationTokenArr = [@[] mutableCopy];
+    if(!self) {
+        return nil;
     }
+    
+    //得到用户对应的数据库路径
+    NSArray<NSString*> *pathArr = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+    _pathUrl = pathArr[0];
+    //server是随便写的，因为服务器所有的数据都存在一个数据库
+    _pathUrl = [_pathUrl stringByAppendingPathComponent:@"server"];
+    //创建数据库
+    _mainThreadRLMRealm = [RLMRealm realmWithURL:[NSURL URLWithString:_pathUrl]];
+    //持有RLMNotificationToken对象
+    _allNotificationTokenArr = [@[] mutableCopy];
+    
+    //让更新数据库的操作异步串行执行，降低cpu峰值
+    _operationQueue = [NSOperationQueue new];
+    _operationQueue.name = @"ImUserOperationQueue";
+    _operationQueue.maxConcurrentOperationCount = 1;
+    //优先级不用太高
+    _operationQueue.qualityOfService = NSQualityOfServiceUtility;
     return self;
 }
 
@@ -60,18 +69,23 @@ static IMUserManager *_userManagerInstance;
 #pragma mark -- Public Methods
 
 + (instancetype)manager {
+    static IMUserManager *iMUserManager;
     static dispatch_once_t predicate;
     dispatch_once(&predicate, ^{
-        _userManagerInstance = [[self class] new];
+        iMUserManager = [IMUserManager new];
     });
-    return _userManagerInstance;
+    return iMUserManager;
 }
 
+#pragma mark - IMMsgContent
+
 - (void)updateIMMsgContent:(IMMsgContent*)msgContent {
-    RLMRealm *rlmRealm = [self currThreadRealmInstance];
-    [rlmRealm beginWriteTransaction];
-    [IMMsgContent createOrUpdateInRealm:rlmRealm withValue:msgContent];
-    [rlmRealm commitWriteTransaction];
+    [_operationQueue addOperationWithBlock:^{
+        RLMRealm *rlmRealm = [self currThreadRealmInstance];
+        [rlmRealm beginWriteTransaction];
+        [IMMsgContent createOrUpdateInRealm:rlmRealm withValue:msgContent];
+        [rlmRealm commitWriteTransaction];
+    }];
 }
 
 - (IMMsgContent*)iMMsgContent:(int64_t)msgId {
@@ -84,11 +98,15 @@ static IMUserManager *_userManagerInstance;
     return content;
 }
 
+#pragma mark - IMServerLog
+
 - (void)updateServerLog:(IMServerLog*)serverLog {
-    RLMRealm *rlmRealm = [self currThreadRealmInstance];
-    [rlmRealm beginWriteTransaction];
-    [IMServerLog createOrUpdateInRealm:rlmRealm withValue:serverLog];
-    [rlmRealm commitWriteTransaction];
+    [_operationQueue addOperationWithBlock:^{
+        RLMRealm *rlmRealm = [self currThreadRealmInstance];
+        [rlmRealm beginWriteTransaction];
+        [IMServerLog createOrUpdateInRealm:rlmRealm withValue:serverLog];
+        [rlmRealm commitWriteTransaction];
+    }];
 }
 
 - (NSMutableArray<IMServerLog*>*)allServerLogs {
@@ -103,7 +121,7 @@ static IMUserManager *_userManagerInstance;
     return resultArr;
 }
 
-- (void)addServerLogChangeListener:(modelChangeHandler)changeHandler {
+- (void)addServerLogChangeListener:(ModelChangeHandler)changeHandler {
     RLMNotificationToken *notificationToken = [[IMServerLog allObjectsInRealm:_mainThreadRLMRealm] addNotificationBlock:^(RLMResults * _Nullable results, RLMCollectionChange * _Nullable change, NSError * _Nullable error) {
         changeHandler();
     }];

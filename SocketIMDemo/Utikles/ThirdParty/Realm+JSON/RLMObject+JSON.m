@@ -138,7 +138,7 @@ static NSInteger const kCreateBatchSize = 100;
 	return primaryKeyValue;
 }
 
-- (void)performInTransaction:(void (^)())transaction {
+- (void)performInTransaction:(void (^)(void))transaction {
 	NSAssert(transaction != nil, @"No transaction block provided");
 	if (self.realm) {
 		[self.realm transactionWithBlock:transaction];
