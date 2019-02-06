@@ -7,11 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		042D9BCB206E7E9D00A3CBFE /* ChatMineTableViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 042D9BC7206E7E9C00A3CBFE /* ChatMineTableViewManager.m */; };
-		042D9BCC206E7E9D00A3CBFE /* ChatMineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 042D9BC8206E7E9C00A3CBFE /* ChatMineView.m */; };
-		042D9BD0206E7EA300A3CBFE /* ChatLogTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042D9BCE206E7EA200A3CBFE /* ChatLogTableCell.xib */; };
-		042D9BD1206E7EA300A3CBFE /* ChatLogTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 042D9BCF206E7EA300A3CBFE /* ChatLogTableCell.m */; };
-		042D9BD7206E7F0E00A3CBFE /* IMServerLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 042D9BD5206E7F0E00A3CBFE /* IMServerLog.m */; };
 		042D9BDA206E7F7A00A3CBFE /* ChatMineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042D9BD9206E7F7A00A3CBFE /* ChatMineController.m */; };
 		042D9BDE206E806500A3CBFE /* CMDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 042D9BDD206E806500A3CBFE /* CMDeviceInfo.m */; };
 		042D9BE1206E812700A3CBFE /* NSDate+Format.m in Sources */ = {isa = PBXBuildFile; fileRef = 042D9BE0206E812700A3CBFE /* NSDate+Format.m */; };
@@ -41,16 +36,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		042D9BC6206E7E9C00A3CBFE /* ChatMineViewTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMineViewTag.h; sourceTree = "<group>"; };
-		042D9BC7206E7E9C00A3CBFE /* ChatMineTableViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMineTableViewManager.m; sourceTree = "<group>"; };
-		042D9BC8206E7E9C00A3CBFE /* ChatMineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMineView.m; sourceTree = "<group>"; };
-		042D9BC9206E7E9D00A3CBFE /* ChatMineTableViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMineTableViewManager.h; sourceTree = "<group>"; };
-		042D9BCA206E7E9D00A3CBFE /* ChatMineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMineView.h; sourceTree = "<group>"; };
-		042D9BCD206E7EA200A3CBFE /* ChatLogTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatLogTableCell.h; sourceTree = "<group>"; };
-		042D9BCE206E7EA200A3CBFE /* ChatLogTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatLogTableCell.xib; sourceTree = "<group>"; };
-		042D9BCF206E7EA300A3CBFE /* ChatLogTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatLogTableCell.m; sourceTree = "<group>"; };
-		042D9BD5206E7F0E00A3CBFE /* IMServerLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMServerLog.m; sourceTree = "<group>"; };
-		042D9BD6206E7F0E00A3CBFE /* IMServerLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMServerLog.h; sourceTree = "<group>"; };
 		042D9BD8206E7F7900A3CBFE /* ChatMineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMineController.h; sourceTree = "<group>"; };
 		042D9BD9206E7F7A00A3CBFE /* ChatMineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMineController.m; sourceTree = "<group>"; };
 		042D9BDC206E806500A3CBFE /* CMDeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMDeviceInfo.h; sourceTree = "<group>"; };
@@ -188,8 +173,6 @@
 			children = (
 				04B44B89206A398800F68C5C /* IMMsgContent.h */,
 				04B44B8A206A398800F68C5C /* IMMsgContent.m */,
-				042D9BD6206E7F0E00A3CBFE /* IMServerLog.h */,
-				042D9BD5206E7F0E00A3CBFE /* IMServerLog.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -255,16 +238,8 @@
 		04729816205A975100930A83 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				042D9BC6206E7E9C00A3CBFE /* ChatMineViewTag.h */,
-				042D9BCA206E7E9D00A3CBFE /* ChatMineView.h */,
-				042D9BC8206E7E9C00A3CBFE /* ChatMineView.m */,
-				042D9BC9206E7E9D00A3CBFE /* ChatMineTableViewManager.h */,
-				042D9BC7206E7E9C00A3CBFE /* ChatMineTableViewManager.m */,
 				042D9BD8206E7F7900A3CBFE /* ChatMineController.h */,
 				042D9BD9206E7F7A00A3CBFE /* ChatMineController.m */,
-				042D9BCD206E7EA200A3CBFE /* ChatLogTableCell.h */,
-				042D9BCF206E7EA300A3CBFE /* ChatLogTableCell.m */,
-				042D9BCE206E7EA200A3CBFE /* ChatLogTableCell.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -403,7 +378,6 @@
 				047C439E202D7D0F00BB3400 /* LaunchScreen.storyboard in Resources */,
 				047C439B202D7D0F00BB3400 /* Assets.xcassets in Resources */,
 				0485694F2061F9C1007C4C53 /* README.md in Resources */,
-				042D9BD0206E7EA300A3CBFE /* ChatLogTableCell.xib in Resources */,
 				048569312060F9C9007C4C53 /* iOS代码规范文档.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -440,17 +414,13 @@
 				047297F2205A974300930A83 /* AppDelegate.m in Sources */,
 				04729812205A974C00930A83 /* MCJSONPrimaryKeyTransformer.m in Sources */,
 				04729811205A974C00930A83 /* MCJSONNonNullStringTransformer.m in Sources */,
-				042D9BCB206E7E9D00A3CBFE /* ChatMineTableViewManager.m in Sources */,
 				042D9BDE206E806500A3CBFE /* CMDeviceInfo.m in Sources */,
-				042D9BD1206E7EA300A3CBFE /* ChatLogTableCell.m in Sources */,
-				042D9BCC206E7E9D00A3CBFE /* ChatMineView.m in Sources */,
 				047297EC205A973F00930A83 /* IMSocketUserHandler.m in Sources */,
 				0472981D205A978900930A83 /* AppCustoms.m in Sources */,
 				04729823205A97D700930A83 /* main.m in Sources */,
 				04B44B8B206A398800F68C5C /* IMMsgContent.m in Sources */,
 				04729814205A974C00930A83 /* RLMObject+Copying.m in Sources */,
 				0472980F205A974C00930A83 /* NSString+Category.m in Sources */,
-				042D9BD7206E7F0E00A3CBFE /* IMServerLog.m in Sources */,
 				042D9BE1206E812700A3CBFE /* NSDate+Format.m in Sources */,
 				04FC7A922065EA340085D9F2 /* IMProtocolServerResp.m in Sources */,
 				047297E9205A973F00930A83 /* IMSocketHeader.m in Sources */,

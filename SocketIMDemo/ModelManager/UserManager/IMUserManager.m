@@ -98,34 +98,4 @@
     return content;
 }
 
-#pragma mark - IMServerLog
-
-- (void)updateServerLog:(IMServerLog*)serverLog {
-    [_operationQueue addOperationWithBlock:^{
-        RLMRealm *rlmRealm = [self currThreadRealmInstance];
-        [rlmRealm beginWriteTransaction];
-        [IMServerLog createOrUpdateInRealm:rlmRealm withValue:serverLog];
-        [rlmRealm commitWriteTransaction];
-    }];
-}
-
-- (NSMutableArray<IMServerLog*>*)allServerLogs {
-    NSMutableArray<IMServerLog*> *resultArr = [@[] mutableCopy];
-    RLMRealm *rlmRealm = [self currThreadRealmInstance];
-    RLMResults *results = [[IMServerLog objectsInRealm:rlmRealm withPredicate:nil] sortedResultsUsingKeyPath:@"id" ascending:NO];
-    //依次填充所有的用户信息
-    for (int index = 0; index < results.count; index ++) {
-        //使用deepCopy拷贝一份数据
-        [resultArr addObject:[results[index] deepCopy]];
-    }
-    return resultArr;
-}
-
-- (void)addServerLogChangeListener:(ModelChangeHandler)changeHandler {
-    RLMNotificationToken *notificationToken = [[IMServerLog allObjectsInRealm:_mainThreadRLMRealm] addNotificationBlock:^(RLMResults * _Nullable results, RLMCollectionChange * _Nullable change, NSError * _Nullable error) {
-        changeHandler();
-    }];
-    [_allNotificationTokenArr addObject:notificationToken];
-}
-
 @end
